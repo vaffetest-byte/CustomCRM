@@ -42,6 +42,24 @@ export const DataProvider = ({ children }) => {
         setDeals(deals.map(d => d.id === id ? updatedDeal : d));
     };
 
+    const [users, setUsers] = useState([
+        { id: 1, name: 'Ryan Crawford', email: 'ryan@stakent.com', role: 'Admin', status: 'Active', avatar: null },
+        { id: 2, name: 'Sarah Connor', email: 'sarah@stakent.com', role: 'Manager', status: 'Active', avatar: null },
+        { id: 3, name: 'Mike Ross', email: 'mike@stakent.com', role: 'Sales', status: 'Inactive', avatar: null },
+    ]);
+
+    const addUser = (user) => {
+        setUsers([...users, { ...user, id: Date.now(), status: 'Active' }]);
+    };
+
+    const updateUser = (id, updatedUser) => {
+        setUsers(users.map(u => u.id === id ? updatedUser : u));
+    };
+
+    const deleteUser = (id) => {
+        setUsers(users.filter(u => u.id !== id));
+    };
+
     const addLender = (lender) => {
         setLenders([...lenders, { ...lender, id: Date.now() }]);
     };
@@ -50,7 +68,8 @@ export const DataProvider = ({ children }) => {
         <DataContext.Provider value={{
             contacts, setContacts,
             lenders, setLenders, addLender,
-            deals, setDeals, addDeal, updateDeal
+            deals, setDeals, addDeal, updateDeal,
+            users, addUser, updateUser, deleteUser
         }}>
             {children}
         </DataContext.Provider>

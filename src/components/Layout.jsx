@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../context/DataContext';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Users, LogOut, Hexagon, Briefcase, Building2, Send, Sun, Moon } from 'lucide-react';
+import { LayoutDashboard, Users, LogOut, Hexagon, Briefcase, Building2, Send, Sun, Moon, Settings as SettingsIcon } from 'lucide-react';
 
 const Sidebar = () => {
   const [theme, setTheme] = useState('dark');
@@ -20,6 +20,7 @@ const Sidebar = () => {
     { icon: Building2, label: 'Lenders', path: '/lenders' },
     { icon: Send, label: 'Fund Deals', path: '/fund-deals' },
     { icon: Users, label: 'Contacts', path: '/contacts' },
+    { icon: SettingsIcon, label: 'Settings', path: '/settings' },
   ];
 
   return (

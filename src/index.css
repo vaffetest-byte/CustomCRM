@@ -1,76 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  /* DARK MODE (Default) - Clean, Professional Slate */
-  --bg-app: #0f172a;
-  /* Slate 900 */
-  --bg-sidebar: #1e293b;
-  /* Slate 800 */
-  --bg-card: #1e293b;
-  /* Slate 800 */
-  --bg-card-hover: #334155;
-  /* Slate 700 */
-  --bg-modal: #1e293b;
+  /* 
+     PREMIUM MINIMALIST THEME 
+     Inspired by Linear / Vercel design systems.
+  */
 
-  --input-bg: #0f172a;
-  /* Slate 900 for inputs in dark mode */
-  --input-border: #334155;
-  /* Slate 700 */
+  /* Dark Mode (Default) - Deepest Blacks & Zincs */
+  --bg-app: #000000;
+  --bg-sidebar: #09090b;
+  /* Zinc 950 */
+  --bg-card: #09090b;
+  --bg-card-hover: #18181b;
+  /* Zinc 900 */
+  --bg-modal: #09090b;
 
-  --text-primary: #f8fafc;
-  /* Slate 50 */
-  --text-secondary: #94a3b8;
-  /* Slate 400 */
-  --text-muted: #64748b;
-  /* Slate 500 */
+  --input-bg: #09090b;
+  --input-border: #27272a;
+  /* Zinc 800 */
+
+  --text-primary: #ededef;
+  /* Zinc 100 */
+  --text-secondary: #a1a1aa;
+  /* Zinc 400 */
+  --text-muted: #52525b;
+  /* Zinc 600 */
 
   --accent-primary: #6366f1;
   /* Indigo 500 */
-  --accent-secondary: #818cf8;
   --accent-hover: #4f46e5;
+  /* Indigo 600 */
+  --accent-subtle: rgba(99, 102, 241, 0.1);
 
-  --border-subtle: #334155;
-  /* Slate 700 */
+  --border-subtle: #27272a;
+  /* Zinc 800 */
+  --border-active: #3f3f46;
+  /* Zinc 700 */
 
-  --radius-sm: 8px;
+  --radius-sm: 6px;
   --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-lg: 20px;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+  /* Subtle indigo glow */
+
+  --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* LIGHT MODE - Clean, Crisp White/Grey */
+/* Light Mode - Sharp & Clean */
 [data-theme="light"] {
-  --bg-app: #f1f5f9;
-  /* Slate 100 */
-  --bg-sidebar: #ffffff;
+  --bg-app: #ffffff;
+  --bg-sidebar: #fbfbfe;
+  /* Very subtle off-white */
   --bg-card: #ffffff;
-  --bg-card-hover: #f8fafc;
+  --bg-card-hover: #f4f4f5;
+  /* Zinc 100 */
   --bg-modal: #ffffff;
 
   --input-bg: #ffffff;
-  --input-border: #cbd5e1;
-  /* Slate 300 */
+  --input-border: #e4e4e7;
+  /* Zinc 200 */
 
-  --text-primary: #0f172a;
-  /* Slate 900 */
-  --text-secondary: #64748b;
-  /* Slate 500 */
-  --text-muted: #94a3b8;
-  /* Slate 400 */
+  --text-primary: #09090b;
+  /* Zinc 950 */
+  --text-secondary: #71717a;
+  /* Zinc 500 */
+  --text-muted: #a1a1aa;
+  /* Zinc 400 */
 
   --accent-primary: #4f46e5;
-  /* Indigo 600 - slightly darker for better contrast on white */
+  /* Indigo 600 */
   --accent-hover: #4338ca;
+  --accent-subtle: rgba(79, 70, 229, 0.05);
 
-  --border-subtle: #e2e8f0;
-  /* Slate 200 */
+  --border-subtle: #e4e4e7;
+  /* Zinc 200 */
+  --border-active: #d4d4d8;
+  /* Zinc 300 */
 
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 15px rgba(79, 70, 229, 0.1);
 }
 
 * {
@@ -80,18 +92,46 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-main);
   background-color: var(--bg-app);
   color: var(--text-primary);
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Modal Overlay Backdrop */
+/* Typography Overrides for 'Best' Look */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  /* Tighter tracking for modern feel */
+}
+
+/* Premium Card Style */
+.card-premium {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-premium:hover {
+  border-color: var(--border-active);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Modal Overlay */
 .modal-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  /* Classy blur */
   position: fixed;
   inset: 0;
   display: flex;
@@ -111,9 +151,9 @@ body {
   }
 }
 
-@keyframes slideIn {
+@keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translateY(10px);
     opacity: 0;
   }
 
@@ -123,11 +163,12 @@ body {
   }
 }
 
-/* Common Input Form Styles */
+/* Form Inputs */
 .form-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  font-family: var(--font-main);
   border-radius: var(--radius-sm);
   border: 1px solid var(--input-border);
   background-color: var(--input-bg);
@@ -138,46 +179,89 @@ body {
 
 .form-input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
-  /* Indigo glow ring */
+  box-shadow: 0 0 0 4px var(--accent-subtle);
 }
 
-/* Button Styles */
+/* Buttons */
 .btn-primary {
   background-color: var(--accent-primary);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
+  font-family: var(--font-main);
   transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-1px);
+.btn-primary:active {
+  transform: scale(0.98);
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--text-secondary);
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-sm);
   font-weight: 500;
-  border: 1px solid transparent;
+  font-family: var(--font-main);
+  transition: all 0.2s;
 }
 
 .btn-secondary:hover {
-  background-color: rgba(148, 163, 184, 0.1);
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-active);
+}
+
+/* Table Styles - Clean & Spacious */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
   color: var(--text-primary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: var(--bg-card-hover);
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 ::-webkit-scrollbar-thumb {
-  background: var(--text-muted);
+  background: var(--border-subtle);
   border-radius: 99px;
   border: 2px solid transparent;
+  /* padding around thumb */
   background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-muted);
 }

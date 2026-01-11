@@ -8,6 +8,7 @@ import Deals from './pages/Deals';
 import DealEditor from './pages/DealEditor';
 import Lenders from './pages/Lenders';
 import FundDeals from './pages/FundDeals';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
             <Route path="lenders" element={<Lenders />} />
 
             <Route path="fund-deals" element={<FundDeals />} />
+
+            <Route path="settings" element={<Settings />} />
 
             {/* Fallback route */}
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -20,147 +20,105 @@ const item = {
 
 // Enhanced Card with interactive hover state
 const DashCard = ({ title, value, icon: Icon, accentColor, trend }) => (
-    <motion.div
-        variants={item}
-        whileHover={{ y: -5, boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}
+    <div
+        className="card-premium"
         style={{
-            backgroundColor: 'var(--bg-card)',
-            borderRadius: 'var(--radius-lg)',
             padding: '1.5rem',
             position: 'relative',
             overflow: 'hidden',
-            border: '1px solid var(--border-subtle)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            minHeight: '200px',
-            cursor: 'default'
+            minHeight: '180px',
         }}
     >
-        {/* Dynamic Background Glow */}
-        <div style={{
-            position: 'absolute',
-            top: '-20%',
-            right: '-10%',
-            width: '120px',
-            height: '120px',
-            background: accentColor || 'var(--accent-primary)',
-            filter: 'blur(70px)',
-            opacity: 0.1,
-            borderRadius: '50%',
-            pointerEvents: 'none'
-        }} />
-
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem', position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem' }}>
             <div style={{
-                background: `linear-gradient(135deg, ${accentColor}20 0%, ${accentColor}10 100%)`, // dynamic alpha
-                padding: '0.875rem',
-                borderRadius: '16px',
+                backgroundColor: 'var(--bg-app)',
+                padding: '0.75rem',
+                borderRadius: '12px',
+                border: '1px solid var(--border-subtle)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: `1px solid ${accentColor}30`
             }}>
-                <Icon size={24} color={accentColor} />
+                <Icon size={22} color={accentColor} />
             </div>
-            <motion.div
-                whileHover={{ scale: 1.1, rotate: 45 }}
-                style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '50%',
-                    border: '1px solid var(--border-subtle)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    background: 'var(--bg-card-hover)'
-                }}
-            >
-                <ArrowUpRight size={18} color="var(--text-secondary)" />
-            </motion.div>
         </div>
 
-        <div style={{ position: 'relative', zIndex: 1 }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: 500 }}>{title}</p>
-            <h3 style={{ fontSize: '2.5rem', fontWeight: '700', letterSpacing: '-0.03em', marginBottom: '0.5rem', background: 'linear-gradient(to bottom, var(--text-primary), var(--text-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{value}</h3>
+        <div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '0.5rem', fontWeight: 500 }}>{title}</p>
+            <h3 style={{ fontSize: '2.25rem', fontWeight: '700', letterSpacing: '-0.03em', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{value}</h3>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span style={{
                     color: trend >= 0 ? 'var(--success)' : 'var(--danger)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.25rem',
-                    fontSize: '0.875rem',
+                    fontSize: '0.8rem',
                     fontWeight: 600,
-                    padding: '0.25rem 0.5rem',
+                    padding: '0.15rem 0.5rem',
                     borderRadius: '99px',
-                    background: trend >= 0 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'
+                    backgroundColor: trend >= 0 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'
                 }}>
                     {trend >= 0 ? '+' : ''}{trend}%
                 </span>
-                <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>vs last month</span>
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>vs last month</span>
             </div>
         </div>
-    </motion.div>
+    </div>
 );
 
 const PortfolioCard = () => (
-    <motion.div
-        variants={item}
-        whileHover={{ scale: 1.02, rotateX: 2, rotateY: 2 }}
+    <div
+        className="card-premium"
         style={{
-            background: 'linear-gradient(135deg, #1e1b4b 0%, #0f0f15 100%)',
-            borderRadius: 'var(--radius-lg)',
             padding: '2rem',
-            color: 'white',
-            position: 'relative',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             gap: '2rem',
             gridRow: 'span 2',
-            overflow: 'hidden',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-            border: '1px solid rgba(255, 255, 255, 0.1)'
+            background: 'linear-gradient(135deg, var(--bg-card) 0%, var(--bg-app) 100%)',
         }}
     >
-        {/* Abstract shapes */}
-        <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '100%', height: '100%', background: 'conic-gradient(from 0deg at 50% 50%, rgba(124, 58, 237, 0.2) 0deg, transparent 60deg, transparent 300deg, rgba(236, 72, 153, 0.2) 360deg)', filter: 'blur(40px)' }} />
-
-        <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            <div style={{ width: 50, height: 50, background: 'rgba(255,255,255,0.1)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)' }}>
-                <PieChart size={24} color="#8b5cf6" />
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div style={{
+                width: 50, height: 50,
+                background: 'var(--accent-primary)',
+                borderRadius: '14px',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 10px 20px -5px rgba(99, 102, 241, 0.4)'
+            }}>
+                <PieChart size={24} color="white" />
             </div>
-            <span style={{ padding: '0.25rem 0.75rem', borderRadius: '99px', background: 'var(--gradient-primary)', fontSize: '0.75rem', fontWeight: 700 }}>LIVE</span>
+            <span style={{
+                padding: '0.25rem 0.75rem',
+                borderRadius: '99px',
+                border: '1px solid var(--border-subtle)',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                color: 'var(--accent-primary)',
+                backgroundColor: 'var(--bg-app)'
+            }}>LIVE</span>
         </div>
 
-        <div style={{ position: 'relative', zIndex: 1 }}>
-            <h3 style={{ fontSize: '2rem', marginBottom: '0.5rem', fontWeight: 800 }}>Fund Portfolio</h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', lineHeight: '1.6' }}>
-                Real-time tracking of deal flow and distribution analytics.
+        <div>
+            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>Fund Portfolio</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>
+                Real-time tracking of active deals and distribution velocity.
             </p>
         </div>
 
-        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative', zIndex: 1 }}>
-            <button style={{
-                background: 'white',
-                color: 'black',
-                borderRadius: 'var(--radius-pill)',
-                padding: '1rem',
-                fontWeight: '700',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem',
-                boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)',
-                border: 'none',
-                transition: 'transform 0.2s'
-            }}>
+        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
                 View Analytics <TrendingUp size={18} />
             </button>
+            <button className="btn-secondary">
+                Manage Lenders
+            </button>
         </div>
-    </motion.div>
+    </div>
 );
 
 const Dashboard = () => {
