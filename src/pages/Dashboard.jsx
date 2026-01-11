@@ -21,7 +21,7 @@ const item = {
 // Enhanced Card with interactive hover state
 const DashCard = ({ title, value, icon: Icon, accentColor, trend }) => (
     <div
-        className="card-premium"
+        className="glass-card"
         style={{
             padding: '1.5rem',
             position: 'relative',
@@ -34,44 +34,32 @@ const DashCard = ({ title, value, icon: Icon, accentColor, trend }) => (
     >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1.5rem' }}>
             <div style={{
-                backgroundColor: 'var(--bg-app)',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
                 padding: '0.75rem',
-                borderRadius: '12px',
-                border: '1px solid var(--border-subtle)',
+                borderRadius: '50%', // Circle icons
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                backdropFilter: 'blur(4px)'
             }}>
-                <Icon size={22} color={accentColor} />
+                <Icon size={22} color="white" />
+            </div>
+            {/* Toggle Imitation */}
+            <div className={`toggle-switch ${trend > 0 ? 'active' : ''}`}>
+                <div className="toggle-handle" />
             </div>
         </div>
 
         <div>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '0.5rem', fontWeight: 500 }}>{title}</p>
-            <h3 style={{ fontSize: '2.25rem', fontWeight: '700', letterSpacing: '-0.03em', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{value}</h3>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{
-                    color: trend >= 0 ? 'var(--success)' : 'var(--danger)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25rem',
-                    fontSize: '0.8rem',
-                    fontWeight: 600,
-                    padding: '0.15rem 0.5rem',
-                    borderRadius: '99px',
-                    backgroundColor: trend >= 0 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'
-                }}>
-                    {trend >= 0 ? '+' : ''}{trend}%
-                </span>
-                <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>vs last month</span>
-            </div>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '0.25rem', fontWeight: 600 }}>{title}</p>
+            <h3 style={{ fontSize: '2.5rem', fontWeight: '800', letterSpacing: '-0.02em', marginBottom: '0.25rem', color: 'white' }}>{value}</h3>
         </div>
     </div>
 );
 
 const PortfolioCard = () => (
     <div
-        className="card-premium"
+        className="glass-card"
         style={{
             padding: '2rem',
             display: 'flex',
@@ -79,43 +67,46 @@ const PortfolioCard = () => (
             justifyContent: 'center',
             gap: '2rem',
             gridRow: 'span 2',
-            background: 'linear-gradient(135deg, var(--bg-card) 0%, var(--bg-app) 100%)',
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(37, 99, 235, 0.4) 100%)', // Blue/Purple Glass
+            border: '1px solid rgba(255,255,255,0.2)'
         }}
     >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div style={{
                 width: 50, height: 50,
-                background: 'var(--accent-primary)',
-                borderRadius: '14px',
+                background: 'rgba(0,0,0,0.2)',
+                borderRadius: '16px',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 10px 20px -5px rgba(99, 102, 241, 0.4)'
+                backdropFilter: 'blur(10px)'
             }}>
                 <PieChart size={24} color="white" />
             </div>
-            <span style={{
-                padding: '0.25rem 0.75rem',
-                borderRadius: '99px',
-                border: '1px solid var(--border-subtle)',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                color: 'var(--accent-primary)',
-                backgroundColor: 'var(--bg-app)'
-            }}>LIVE</span>
+
+            {/* Toggle Green */}
+            <div style={{ width: 32, height: 18, background: 'var(--accent-primary)', borderRadius: 99, position: 'relative' }}>
+                <div style={{ width: 14, height: 14, background: 'white', borderRadius: '50%', position: 'absolute', right: 2, top: 2 }} />
+            </div>
         </div>
 
         <div>
-            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>Fund Portfolio</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.6' }}>
-                Real-time tracking of active deals and distribution velocity.
-            </p>
+            <h3 style={{ fontSize: '1.75rem', marginBottom: '0.75rem', fontWeight: 700, color: 'white' }}>Fund Portfolio</h3>
+            {/* Progress Bar imitation */}
+            <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.2)', borderRadius: '99px', marginTop: '1rem', marginBottom: '0.5rem' }}>
+                <div style={{ width: '65%', height: '100%', background: 'white', borderRadius: '99px' }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)' }}>
+                <span>$1.2M Distributed</span>
+                <span>$2.0M Goal</span>
+            </div>
         </div>
 
-        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                View Analytics <TrendingUp size={18} />
+        <div style={{ marginTop: 'auto', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            {/* Player Control Imitation Buttons */}
+            <button className="btn-glass" style={{ borderRadius: '50%', width: 48, height: 48, padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <TrendingUp size={20} />
             </button>
-            <button className="btn-secondary">
-                Manage Lenders
+            <button className="btn-primary" style={{ flex: 1 }}>
+                View Analytics
             </button>
         </div>
     </div>

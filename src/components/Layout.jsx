@@ -27,8 +27,8 @@ const Sidebar = () => {
     <div style={{
       width: '260px',
       height: '100vh',
-      backgroundColor: 'var(--bg-sidebar)',
-      borderRight: '1px solid var(--border-subtle)',
+      backgroundColor: 'transparent', // Transparent to see gradient
+      borderRight: '1px solid rgba(255,255,255,0.1)',
       display: 'flex',
       flexDirection: 'column',
       padding: '1.5rem',
@@ -37,15 +37,18 @@ const Sidebar = () => {
       {/* Logo Area */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2.5rem' }}>
         <div style={{
-          color: 'var(--accent-primary)',
+          color: 'var(--text-primary)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: '12px',
+          width: 42, height: 42
         }}>
-          <Hexagon size={32} />
+          <Hexagon size={24} />
         </div>
         <div>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: '700', letterSpacing: '-0.5px', color: 'var(--text-primary)' }}>NexusCRM</h1>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: '700', letterSpacing: '-0.5px', color: 'var(--text-primary)' }}>Isabella</h1>
         </div>
       </div>
 
@@ -60,18 +63,21 @@ const Sidebar = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.75rem',
-                padding: '0.75rem 1rem',
-                borderRadius: 'var(--radius-sm)',
-                color: isActive ? 'white' : 'var(--text-secondary)',
-                backgroundColor: isActive ? 'var(--accent-primary)' : 'transparent',
-                fontWeight: isActive ? 500 : 400,
+                padding: '0.9rem 1.25rem',
+                borderRadius: '24px', // Rounded pills
+                color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                backgroundColor: isActive ? 'rgba(255,255,255,0.2)' : 'transparent',
+                fontWeight: isActive ? 600 : 500,
                 transition: 'all 0.2s',
+                marginBottom: '0.25rem',
+                border: isActive ? '1px solid rgba(255,255,255,0.1)' : '1px solid transparent'
               })}
             >
               {({ isActive }) => (
                 <>
                   <item.icon size={20} />
                   <span>{item.label}</span>
+                  {isActive && <div style={{ width: 6, height: 6, background: 'var(--accent-primary)', borderRadius: '50%', marginLeft: 'auto' }} />}
                 </>
               )}
             </NavLink>
